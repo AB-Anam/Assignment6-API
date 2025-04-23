@@ -47,17 +47,35 @@ const displayAllPets = (pets) => {
     console.log(item);
     const card = document.createElement("div");
     card.classList = 'card bg-base-100 border-[1px] border-edge rounded-lg'
-    card.innerHTML = `<figure class="px-2 pt-2 h-auto">
+    card.innerHTML = `<figure class="px-3 pt-3 h-40">
     <img
       src= ${item.image}
       alt="Shoes"
-      class="rounded-lg" />
+      class="rounded-lg h-full w-full object-cover" />
   </figure>
-  <div class="card-body items-center">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div class="card-actions">
-      <button class="btn btn-primary">Buy Now</button>
+  <div class="card-body px-3 pt-3">
+    <h2 class="card-title">${item.pet_name}</h2>
+    <div class="flex gap-1" >
+    <img class="w-4" src ="https://img.icons8.com/?size=48&id=bShzw12NoVBS&format=png"/>
+    <p class="text-sm text-slate-600 leading-none">Breed: ${item.breed}</p>
+    </div>
+    <div class="flex gap-1" >
+    <img class="w-4 h-4" src ="https://img.icons8.com/?size=24&id=sLnSWPXgXnHw&format=png"/>
+    <p class="text-sm text-slate-600 leading-none">Birth: ${item.date_of_birth}</p>
+    </div>
+    <div class="flex gap-1" >
+    <img class="w-4" src ="https://img.icons8.com/?size=48&id=19892&format=png"/>
+    <p class="text-sm text-slate-600 leading-none">Gender: ${item.gender}</p>
+    </div>
+    <div class="flex gap-1" >
+    <img class="w-4" src ="https://img.icons8.com/?size=40&id=31090&format=png"/>
+    <p class="text-sm text-slate-600 leading-none">Price: ${item.price}$</p>
+    </div>
+    <div class="divider my-0"></div>
+    <div class="flex gap-2">
+      <button class="btn btn-outline btn-success"><img class="w-5" src="https://img.icons8.com/?size=24&id=SVZUo0RhRuHJ&format=png"/> </button>
+      <button class="btn btn-outline btn-success">Adopt</button>
+      <button class="btn btn-outline btn-success">Details</button>
     </div>
   </div>`;
   allPetContainer.appendChild(card);
