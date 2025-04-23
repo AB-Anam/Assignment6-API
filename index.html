@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="lato-light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Manrope:wght@200..800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    .lato-thin {
+      font-family: "Lato", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+    }
+
+    .lato-light {
+      font-family: "Lato", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    .lato-regular {
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .lato-bold {
+      font-family: "Lato", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .lato-black {
+      font-family: "Lato", sans-serif;
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    .toggle-btn {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    .btn1:hover {
+     
+      border-radius: 9999px;
+      border-width: 2px;
+      border-color: #0E7A81 !important; /* Equivalent to rounded-full */
+      background-color: #e6f1f2 !important;
+      color: black !important;
+    } /* custom hover color */
+
+  </style>
+  <link
+    href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script
+    src="https://kit.fontawesome.com/c25455ffbc.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "barn-primary": "#0E7A81",
+            edge: "#e6f1f2",
+            "nav-bg": "#F9F7F3",
+          },
+        },
+      },
+    };
+  </script>
+  <body class="lato-regular mx-1 lg:mx-32">
+    <header>
+      <div class="navbar bg-base-100">
+        <div class="navbar-start">
+          <a class="lato-black text-3xl"
+            ><i class="text-barn-primary fa-solid fa-paw"></i> Peddy</a
+          >
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul
+            class="menu menu-horizontal px-1 text-base font-medium text-slate-500"
+          >
+            <li>
+              <a>Home</a>
+            </li>
+            <li>
+              <a>Shop</a>
+            </li>
+            <li>
+              <a>Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <a class="text-3xl text-barn-primary font-thin"
+            ><i class="fa-regular fa-circle-user"></i
+          ></a>
+        </div>
+      </div>
+      <section class="mb-4">
+        <div class="card w-full">
+          <div class="text-center">
+            <p class="text-xl text-gray-500 my-6">Bringing Families Together</p>
+            <h2
+              class="card-title text-3xl lg:text-6xl lato-bold flex justify-center"
+            >
+              Your Path to Adoption <br />
+              Starts Here
+            </h2>
+            <h2
+              class="text-base text-gray-800 lato-regular flex justify-center my-4"
+            >
+              Connecting Loving Homes with Wonderful Pets. Explore our diverse
+              community of animals, <br />
+              learn about their unique needs, and find the newest member of your
+              family.
+            </h2>
+            <div>
+              <button class="btn bg-barn-primary rounded-lg text-white">
+                View More
+              </button>
+            </div>
+          </div>
+          <figure class="mt-0">
+            <img class="h-auto lg:h-64" src="./images/pets.png" alt="" />
+          </figure>
+        </div>
+      </section>
+    </header>
+    <main>
+      <section>
+        <div class="text-center mb-8">
+          <h2 class="text-3xl lato-black py-2">Adopt Your Best Friend</h2>
+          <p class="lato-regular text-base">
+            More Than Just Pets, They're Family. Find your lifelong companion
+            from trusted sources. <br />
+            We prioritize animal welfare and responsible pet ownership.
+          </p>
+        </div>
+        <div
+          id="pet-categories"
+          class="my-10 h-auto grid grid-cols-2 lg:grid-cols-4 gap-24"
+        ></div>
+        <div class="flex justify-between">
+          <h3 class="lato-black text-lg">Best Deal For You</h3>
+          <button class="btn btn-primary">Primary</button>
+        </div>
+        <div class="pet-container"></div>
+      </section>
+      <section>
+        <div id="allPets-container" class="grid grid-cols-12">
+          <div id="displayAllpets" class="displayPets grid col-span-8 grid-cols-3 gap-6 h-auto">
+
+
+          </div>
+          <div class="selected-pets grid col-span-4 grid-cols-2 h-auto">
+
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
