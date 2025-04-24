@@ -81,7 +81,7 @@ const displayAllPets = (pets) => {
   pets.forEach((item) => {
     
     array.push(item);
-    // console.log(array);
+    // console.log(item);
     const card = document.createElement("div");
     card.classList = 'card bg-base-100 border-[1px] border-edge rounded-lg'
     card.innerHTML = `<figure class="px-3 pt-3 h-40">
@@ -111,9 +111,9 @@ const displayAllPets = (pets) => {
     <div class="divider my-0"></div>
     <div class="flex gap-2 my-0 py-0">
       <button onclick="diaplaySelectedpets('${item.image}')" class="btn btn2 text-barn-primary"><img class="h-8" src = "https://img.icons8.com/?size=60&id=wbdaZ6Dm6bFk&format=png"/></button>
-      <button class="btn btn2 text-barn-primary" 
+      <button class="btn btn2 text-barn-primary" onclick="showCongratsModal()"
       onclick="this.classList.add('opacity-50', 'cursor-not-allowed', 'bg-[#0E7A81]', '!text-white', 'disabled');">Adopt</button>
-      <button class="btn btn2 text-barn-primary">Details</button>
+      <button onclick="loadPetDetails('${item.petId}')" class="btn btn2 text-barn-primary">Details</button>
     </div>
   </div>`;
   allPetContainer.appendChild(card);
@@ -145,6 +145,14 @@ const displayAllPets = (pets) => {
 
 };
 
+const loadPetDetails = (id) => {
+  const url = `https://openapi.programming-hero.com/api/peddy/pet/${id}`
+  // console.log(url);
+      fetch(url)
+      .then((res) => res.json())
+      .then((data) => displayPetDetails(data.petData));
+ }
+
 diaplaySelectedpets = (image) =>{
   console.log(image)
   const petImage = document.createElement('div');
@@ -163,6 +171,104 @@ const loadCategoryPets = (id) =>{
     .catch((error) => console.log(error));
 
    
+};
+
+const displayPetDetails = (details) => {
+  console.log(details);
+
+  // Remove old modal if it exists to avoid duplicates
+  const oldModal = document.getElementById('my_modal_5');
+  if (oldModal) oldModal.remove();
+
+  const petDetails = document.createElement('div');
+  petDetails.innerHTML = `
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box p-5">
+        <img class="w-full h-1/4 object-cover" src=${details.image}/>
+        <h3 class="text-2xl lato-bold">${details.pet_name}</h3>
+        <div class="flex  mt-3 gap-5">
+              <div class="flex gap-1" >
+          <img class="w-4" src ="https://img.icons8.com/?size=48&id=bShzw12NoVBS&format=png"/>
+          <p class="text-sm text-slate-600 leading-none font-semibold">Breed: ${details.breed?details.breed:"Not available"}</p>
+          </div>
+          <div class="flex gap-1 " >
+          <img class="w-4 h-4" src ="https://img.icons8.com/?size=24&id=sLnSWPXgXnHw&format=png"/>
+          <p class="text-sm text-slate-600 leading-none font-semibold">Birth: ${details.date_of_birth?details.date_of_birth:"Not available"}</p>
+          </div>
+
+        </div>
+
+        <div class="flex  mt-3 gap-5">
+              <div class="flex gap-1" >
+          <img class="w-4" src ="https://img.icons8.com/?size=48&id=19892&format=png"/>
+          <p class="text-sm text-slate-600 leading-none font-semibold">Gender: ${details.gender?details.gender:"Not available"}</p>
+          </div>
+          <div class="flex gap-1 " >
+          <img class="w-4 h-4" src ="https://img.icons8.com/?size=40&id=31090&format=png"/>
+          <p class="text-sm text-slate-600 leading-none font-semibold">Price: ${details.price?details.price:"Not available"}</p>
+          </div>
+
+        </div>
+        <div class="flex gap-1 mt-3" >
+          <img class="w-4 h-4" src ="https://img.icons8.com/?size=48&id=3fhpUBEis65z&format=png"/>
+          <p class="text-sm text-slate-600 leading-none font-semibold">Vaccinated status: ${details.vaccinated_status?details.vaccinated_status:"Not available"}</p>
+          </div>
+        
+          <div class="divider my-0"></div>
+         <h3 class="text-2xl lato-bold">Detailed Information</h3>
+        <p class="py-4 text-sm">${details.pet_details}</p>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+  `;
+
+  document.getElementById('detailsSection').appendChild(petDetails);
+
+  // Show the modal immediately after adding to DOM
+  const modal = document.getElementById('my_modal_5');
+  modal.showModal();
+};
+
+const showCongratsModal = () => {
+  // Remove old modal if it exists
+  const oldModal = document.getElementById('congrats_modal');
+  if (oldModal) oldModal.remove();
+
+  // Create modal HTML
+  const modalWrapper = document.createElement('div');
+  modalWrapper.innerHTML = `
+    <dialog id="congrats_modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box text-center">
+        <h3 class="text-lg font-bold">🎉 Congratulations!</h3>
+        <p class="py-4">Closing in <span id="countdown" class="text-6xl font-bold">3</span> seconds...</p>
+      </div>
+    </dialog>
+  `;
+
+  // Add to DOM
+  document.body.appendChild(modalWrapper);
+
+  const modal = document.getElementById('congrats_modal');
+  const countdownEl = document.getElementById('countdown');
+
+  modal.showModal();
+
+  // Countdown logic
+  let secondsLeft = 3;
+  const countdown = setInterval(() => {
+    secondsLeft--;
+    if (secondsLeft > 0) {
+      countdownEl.textContent = secondsLeft;
+    } else {
+      clearInterval(countdown);
+      modal.close();
+      modal.remove();
+    }
+  }, 1000);
 };
 
 
