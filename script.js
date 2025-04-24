@@ -10,10 +10,26 @@ const loadCategories = () => {
 };
 
 const loadPets = () => {
-  fetch("https://openapi.programming-hero.com/api/peddy/pets")
+
+  const spinner = document.getElementById("spinner");
+  const container = document.getElementById("detailsSection");
+
+  // Show spinner, hide content
+  spinner.classList.remove("hidden");
+
+ const fetchPromise= fetch("https://openapi.programming-hero.com/api/peddy/pets")
     .then((res) => res.json())
-    .then((data) => displayAllPets(data.pets))
+    .then((data) => data.pets  || [])
     .catch((error) => console.log(error));
+
+
+    Promise.all([
+      fetchPromise,
+      new Promise((resolve) => setTimeout(resolve, 2000)),
+    ]).then(([data]) => {
+      spinner.classList.add("hidden");
+      displayAllPets(data);
+    });
 };
 
 const displayCategories = (categories) => {
@@ -45,7 +61,7 @@ const displayCategories = (categories) => {
 
 const displayAllPets = (pets) => {
   const allPetContainer = document.getElementById("displayAllpets");
-
+  
   allPetContainer.innerHTML = "";
   const card = document.createElement("div");
 
@@ -81,7 +97,7 @@ const displayAllPets = (pets) => {
   pets.forEach((item) => {
     
     array.push(item);
-    // console.log(item);
+     console.log(item);
     const card = document.createElement("div");
     card.classList = 'card bg-base-100 border-[1px] border-edge rounded-lg'
     card.innerHTML = `<figure class="px-3 pt-3 h-40">
@@ -243,8 +259,8 @@ const showCongratsModal = () => {
   modalWrapper.innerHTML = `
     <dialog id="congrats_modal" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box text-center">
-        <h3 class="text-lg font-bold">🎉 Congratulations!</h3>
-        <p class="py-4">Closing in <span id="countdown" class="text-6xl font-bold">3</span> seconds...</p>
+        <h3 class="text-4xl font-bold">🎉 Congratulations!</h3>
+        <p class="py-4 text-3xl">Closing in <span id="countdown" class="text-6xl font-bold">3</span> seconds...</p>
       </div>
     </dialog>
   `;
@@ -270,6 +286,9 @@ const showCongratsModal = () => {
     }
   }, 1000);
 };
+
+
+
 
 
 loadCategories();

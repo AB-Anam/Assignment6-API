@@ -154,7 +154,7 @@
     <main>
       <section>
         <div class="text-center mb-8">
-          <h2 class="text-3xl lato-black py-2">Adopt Your Best Friend</h2>
+          <h2 class="text-2xl lg:text-3xl lato-black py-2">Adopt Your Best Friend</h2>
           <p class="lato-regular text-base">
             More Than Just Pets, They're Family. Find your lifelong companion
             from trusted sources. <br />
@@ -163,15 +163,20 @@
         </div>
         <div
           id="pet-categories"
-          class="my-10 h-auto grid grid-cols-2 lg:grid-cols-4 gap-24"></div>
-        <div class="flex justify-between my-6">
-          <h3 class="lato-black text-lg">Best Deal For You</h3>
-          <button id="sort" class="btn bg-barn-primary btn3 text-white font-bold py-2 px-4 rounded-lg">Sort By Price</button>
+          class="my-10 h-auto grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-24"></div>
+        <div class="flex flex-col lg:flex-row justify-center lg:justify-between  my-6">
+          <h3 class="lato-black text-lg text-center mb-2 lg:mb-0">Best Deals For You</h3>
+          <button id="sort" class="btn bg-barn-primary btn3 text-white font-bold py-2 px-4 mx-5 lg:mx-0 rounded-lg">Sort By Price</button>
         </div>
-        <div class="pet-container"></div>
+        <div id="spinner" class="text-center hidden">
+          <span class="loading loading-spinner loading-lg"></span>
+        </div>
+        <div class="pet-container">
+          
+        </div>
       </section>
       <section id="detailsSection">
-        <div id="allPets-container" class="grid grid-cols-1 lg:grid-cols-12 gap-2">
+        <div id="allPets-container" class="flex flex-col lg:grid lg:grid-cols-12 gap-2">
           <div id="displayAllpets" class="displayPets grid col-span-1 lg:col-span-9 grid-cols-1 lg:grid-cols-3 gap-6 h-auto border-[1px] border-edge rounded-lg p-2">
 
           </div>
