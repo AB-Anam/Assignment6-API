@@ -21,4 +21,4 @@ Promises / fetch() API – For handling asynchronous API calls.
 Default Parameters – For cleaner function definitions.
 Array Methods (map, filter, find, etc.) – For data manipulation.
 
-live link: 
+live link: https://ab-anam.github.io/Assignment6-API/
