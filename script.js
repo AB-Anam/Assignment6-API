@@ -45,7 +45,7 @@ const displayCategories = (categories) => {
     icon.src = element.category_icon;
     icon.classList = " mr-2 h-12";
     //add tailwind class
-    button.classList = "btn1 btn btn-outline  text-base h-16 border-edge  rounded-lg font-extrabold";
+    button.classList = "btn1 btn btn-outline text-base h-16 border-edge mx-5  rounded-lg font-extrabold";
     //click function on buttons
     button.onclick = () => loadCategoryPets(element.category)
     //add category name to button
