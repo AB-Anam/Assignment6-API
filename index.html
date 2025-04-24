@@ -95,8 +95,8 @@
       },
     };
   </script>
-  <body class="lato-regular mx-1 lg:mx-32">
-    <header>
+  <body class="lato-regular">
+    <header class=" mx-1 lg:mx-32">
       <div class="navbar bg-base-100">
         <div class="navbar-start">
           <a class="lato-black text-3xl"><i class="text-barn-primary fa-solid fa-paw"></i> Peddy</a>
@@ -151,7 +151,7 @@
         </div>
       </section>
     </header>
-    <main>
+    <main class=" mx-1 lg:mx-32">
       <section>
         <div class="text-center mb-8">
           <h2 class="text-2xl lg:text-3xl lato-black py-2">Adopt Your Best Friend</h2>
@@ -191,10 +191,50 @@
           </div>
         </div>
       </section>
-      <section>
-        
-      </section>
     </main>
+    <section>
+      <footer>
+        <footer class="footer bg-neutral text-white py-14 px-10 lg:px-16 lg:justify-around mt-10">
+          <nav>
+            <a class="lato-black text-3xl mb-2"><i class="text-barn-primary fa-solid fa-paw"></i> Peddy</a>
+            <a class="link link-hover">Location: av. Washington 165, NY CA </a>
+            <a class="link link-hover">54003</a>
+            <a class="link link-hover"> Phone: +31 85 964 47 25</a>
+            <a class="link link-hover"> Email: info@yourdomain.com</a>
+            <a class="link link-hover"> Openings hours: 9.00 AM - 5.00 PM</a>
+          </nav>
+          <nav>
+            <h6 class="text-2xl text-white mb-2 lato-bold">Useful Links</h6>
+            <a class="link link-hover">About us</a>
+            <a class="link link-hover">Contact</a>
+            <a class="link link-hover">Jobs</a>
+            <a class="link link-hover">Animals</a>
+            <a class="link link-hover">Foundation</a>
+          </nav>
+          <nav>
+            <h6 class="text-2xl text-white mb-2 lato-bold">Legal</h6>
+            <a class="link link-hover">Terms of use</a>
+            <a class="link link-hover">Privacy policy</a>
+            <a class="link link-hover">Cookie policy</a>
+          </nav>
+          <form>
+            <h6 class="text-2xl text-white mb-2 lato-bold">Newsletter</h6>
+            <fieldset class="form-control w-80">
+              <label class="label">
+                <span class="">Drop a Message!</span>
+              </label>
+              <div class="join">
+                <input
+                  type="text"
+                  placeholder="username@site.com"
+                  class="input input-bordered join-item" />
+                <button class="btn bg-barn-primary join-item">Send</button>
+              </div>
+            </fieldset>
+          </form>
+        </footer>
+      </footer>
+    </section>
     <script src="./script.js"></script>
   </body>
 </html>

@@ -122,17 +122,18 @@ const displayAllPets = (pets) => {
     </div>
     <div class="flex gap-1" >
     <img class="w-4" src ="https://img.icons8.com/?size=40&id=31090&format=png"/>
-    <p class="text-sm text-slate-600 leading-none">Price: ${item.price?item.price:"Not available"}</p>
+    <p class="text-sm text-slate-600 leading-none">Price: ${item.price?`${item.price}$`:"Not available"}</p>
     </div>
     <div class="divider my-0"></div>
     <div class="flex gap-2 my-0 py-0">
       <button onclick="diaplaySelectedpets('${item.image}')" class="btn btn2 text-barn-primary"><img class="h-8" src = "https://img.icons8.com/?size=60&id=wbdaZ6Dm6bFk&format=png"/></button>
-      <button class="btn btn2 text-barn-primary" onclick="showCongratsModal()"
-      onclick="this.classList.add('opacity-50', 'cursor-not-allowed', 'bg-[#0E7A81]', '!text-white', 'disabled');">Adopt</button>
+      <button class="btn btn2 text-barn-primary" onclick="showCongratsModal(),this.classList.add('opacity-50', 'cursor-not-allowed', 'bg-[#0E7A81]', '!text-white', 'disabled');">Adopt</button>
       <button onclick="loadPetDetails('${item.petId}')" class="btn btn2 text-barn-primary">Details</button>
     </div>
   </div>`;
+
   allPetContainer.appendChild(card);
+
   });
 
 
@@ -260,7 +261,7 @@ const showCongratsModal = () => {
     <dialog id="congrats_modal" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box text-center">
         <h3 class="text-4xl font-bold">🎉 Congratulations!</h3>
-        <p class="py-4 text-3xl">Closing in <span id="countdown" class="text-6xl font-bold">3</span> seconds...</p>
+        <p class="py-4 text-3xl">Closing in <span id="countdown" class="text-6xl text-barn-primary font-bold">3</span> seconds...</p>
       </div>
     </dialog>
   `;
