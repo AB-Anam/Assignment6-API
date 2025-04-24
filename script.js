@@ -52,7 +52,7 @@ const displayAllPets = (pets) => {
   if(pets.length == 0){
     allPetContainer.classList.remove('grid');
     card.innerHTML = `
- <div class="card bg-base-100 w-full border-0">
+ <div class="card bg-base-100 w-full border-0 mb-6">
   <figure class="px-10 pt-10">
     <img
       src="https://img.icons8.com/?size=80&id=igolVkTttqdp&format=png"
@@ -62,6 +62,9 @@ const displayAllPets = (pets) => {
   <div class="card-body items-center text-center border-0">
     <h2 class="card-title text-3xl text-barn-primary">Oops!</h2>
     <p class="text-xl text-zinc-800">No Information Available!</p>
+    <p class="text-sm text-emerald-600">Sorry, the bird category is currently unavailable.
+     We are working to bring our bunny friends back soon! Please check other adorable pets or try again later. 
+     Thank you for your patience!</p>
   </div>
 </div>
     `;
@@ -72,9 +75,13 @@ const displayAllPets = (pets) => {
     allPetContainer.classList.add('grid');
 
   }
+  
+  let array = []; 
 
   pets.forEach((item) => {
-    // console.log(item);
+    
+    array.push(item);
+    // console.log(array);
     const card = document.createElement("div");
     card.classList = 'card bg-base-100 border-[1px] border-edge rounded-lg'
     card.innerHTML = `<figure class="px-3 pt-3 h-40">
@@ -103,15 +110,49 @@ const displayAllPets = (pets) => {
     </div>
     <div class="divider my-0"></div>
     <div class="flex gap-2 my-0 py-0">
-      <button class="btn btn2 text-barn-primary" onclick="displaySelectedPets(${item.image})>
-      <i class="fa-solid fa-thumbs-up"></i></button>
-      <button class="btn btn2 text-barn-primary">Adopt</button>
+      <button onclick="diaplaySelectedpets('${item.image}')" class="btn btn2 text-barn-primary"><img class="h-8" src = "https://img.icons8.com/?size=60&id=wbdaZ6Dm6bFk&format=png"/></button>
+      <button class="btn btn2 text-barn-primary" 
+      onclick="this.classList.add('opacity-50', 'cursor-not-allowed', 'bg-[#0E7A81]', '!text-white', 'disabled');">Adopt</button>
       <button class="btn btn2 text-barn-primary">Details</button>
     </div>
   </div>`;
   allPetContainer.appendChild(card);
   });
+
+
+
+  document.getElementById('sort').addEventListener('click', function (){
+        
+    // Note: We should handle the case of zero, when the value of both the objects is the same, to avoid unnecessary swaps.
+
+    let sortedProducts = array.sort((p1, p2) => 
+
+
+    // conditions and optional chaining used as well to move further
+    // 
+     (p1.price) < (p2.price) ? 1 : 
+     (p1.price) > (p2.price) ? -1 : 0);
+
+    // to display the sorted data, calling the diplayData function 
+    // and sending the sorted array of objects in decending order of views
+    // as a parameter
+
+    displayAllPets(sortedProducts);
+    // console.log("Products sorted based on descending order of their prices are:")
+    // console.log(sortedProducts);
+
+  });
+
 };
+
+diaplaySelectedpets = (image) =>{
+  console.log(image)
+  const petImage = document.createElement('div');
+  petImage.innerHTML = `<img class ="rounded-lg" src = ${image}/>`;
+  petImage.classList.add('w-5/12')
+  document.getElementById('selectedPetsContainer').appendChild(petImage);
+  
+}
 
 const loadCategoryPets = (id) =>{
     // console.log(id);
@@ -123,10 +164,6 @@ const loadCategoryPets = (id) =>{
 
    
 };
-
-const displaySelectedPets = () =>{
-
-}
 
 
 loadCategories();
